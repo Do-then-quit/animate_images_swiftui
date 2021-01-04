@@ -34,17 +34,21 @@ struct ContentView: View {
             Text("Hello, world!")
             Image(uiImage: images[index])
                 .resizable()
-
                 .onReceive(
                     timer.publisher,
                     perform: { _ in
                         self.index = self.index + 1
-                        if self.index >= 142 { self.index = 0 }
+                        if self.index >= 142 {
+                            self.index = 141
+                        }
+                        
                     }
                 )
                 .onAppear { self.timer.start() }
                 .onDisappear { self.timer.cancel() }
-            
+                .onTapGesture(perform: {
+                    self.index = 0
+                })
         }
     }
 }
