@@ -33,6 +33,7 @@ struct animationView: View {
                 timer.publisher,
                 perform: { _ in
                     self.index = self.index + 1
+                    
                     if self.index >= 142 {
                         self.index = 141
                     }
@@ -43,6 +44,8 @@ struct animationView: View {
             .onTapGesture(perform: {
                 self.index = 0
             })
+            .opacity(1 / Double(self.index))
+            
     }
 }
 
