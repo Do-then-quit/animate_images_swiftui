@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var show = false
 
     var body: some View {
-        VStack {
-            Text("Hello, world!")
+        ZStack {
             animationView()
+            Button(action: { self.show.toggle() }) {
+                Text("asdf")
+            }
+            .foregroundColor(.white)
+            .background(Color.blue)
+            .sheet(isPresented: $show, content: {
+                ActionSheet()
+            })
             
         }
     }
