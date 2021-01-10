@@ -12,7 +12,13 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
+            Image("back_class_sun")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .blur(radius: 2)
             animationView()
+          
             Button(action: { self.show.toggle() }) {
                 Text("asdf")
             }
@@ -21,13 +27,22 @@ struct ContentView: View {
             .sheet(isPresented: $show, content: {
                 ActionSheet()
             })
-            
         }
+        
+       
+
+        
+        
+        
+        
+       
+       
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice("iPhone 12 Pro")
     }
 }
