@@ -17,26 +17,25 @@ struct ContentView: View {
                 .scaledToFill()
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 .blur(radius: 2)
+            
             animationView()
           
-            Button(action: { self.show.toggle() }) {
-                Text("asdf")
-            }
-            .foregroundColor(.white)
-            .background(Color.blue)
-            .sheet(isPresented: $show, content: {
-                ActionSheet()
+            VStack {
+                Spacer()
+                
+                Button(action: { self.show.toggle() }) {
+                    Text("list pop")
+                        .font(.headline)
+                        .frame(width: 350, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(.blue)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                }
+                .sheet(isPresented: $show, content: {
+                    ActionSheet()
             })
+            }
         }
-        
-       
-
-        
-        
-        
-        
-       
-       
     }
 }
 
