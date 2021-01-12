@@ -29,7 +29,7 @@ struct animationView: View {
     var body: some View {
         Image(uiImage: images[index])
             .resizable()
-            .scaledToFill()
+            .scaledToFit()
             .onReceive(
                 timer.publisher,
                 perform: { _ in

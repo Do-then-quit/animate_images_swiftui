@@ -8,33 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var show = false
-
+    @State private var bottomSheetShown = false
     var body: some View {
-        ZStack {
-            Image("back_class_sun")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                .blur(radius: 2)
-            
-            animationView()
-          
-            VStack {
-                Spacer()
+        GeometryReader { geometry in
+            ZStack {
+                Image("back_class_sun")
+                    .resizable()
+                    .blur(radius: 2)
                 
-                Button(action: { self.show.toggle() }) {
-                    Text("list pop")
-                        .font(.headline)
-                        .frame(width: 350, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(.blue)
-                        .background(Color.white)
-                        .cornerRadius(10)
+                animationView()
+                BottomSheetView(
+                    isOpen: self.$bottomSheetShown,
+                    maxHeight: geometry.size.height * 0.7
+                ) {
+                    TodoView() //To-do list view will be here.
+                    //Think how to scroll TodoView when it is closed.
                 }
-                .sheet(isPresented: $show, content: {
-                    ActionSheet()
-            })
-            }
+               
+            }.edgesIgnoringSafeArea(.all)
         }
     }
 }

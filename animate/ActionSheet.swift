@@ -4,6 +4,7 @@
 //
 //  Created by LeeMinkyo on 2021/01/10.
 //
+//곧 리스트로 포변할 뷰입니다.
 
 import SwiftUI
 
